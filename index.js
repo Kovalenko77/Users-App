@@ -274,7 +274,7 @@ function showAllUsers(users) {
 }
 
 function getInfo(user, index) {
-  return `<div id='${user.id}'>
+  return `<div data-id='${user.id}'>
    ${(index+1)}
    ${user.name} |
    id:${user.id} | 
@@ -299,7 +299,7 @@ function getMoreInfo(event) {
         }
         someFetch = fakeRequest();
     } else {
-        someFetch = fetch(SERVER_URL +'/users/'+ userId)
+        someFetch = fetch(SERVER_URL + '/users/' + userId)
             .then((response)=> { 
                 return response.json()
             })
@@ -335,6 +335,6 @@ function deleteUser(event) {
     console.warn('user has been successfully deleted');
     showAllUsers(globalUsers);
   })
-  .catch(error=> console.error('Error of deletting users'))
+  .catch(error=> console.error('Error of deleting users'))
 }
 
