@@ -1,6 +1,6 @@
 let globalUsers = [];
 const SERVER_URL = 'https://jsonplaceholder.typicode.com';
-const USE_MOCKS = true;
+const USE_MOCKS = false;
 
 const TEST_USERS = [
     {
@@ -287,7 +287,7 @@ function getInfo(user, index) {
 function getMoreInfo(event) {
     const activatedButton = event.target;
     const userHtmlEl = activatedButton.parentElement;
-    const userId = userHtmlEl.id;
+    const userId = userHtmlEl.getAttribute('data-id');
     if (USE_MOCKS) {
         function myPromise (resolve, reject) {
             setTimeout(() => {
@@ -314,7 +314,7 @@ function getMoreInfo(event) {
 function deleteUser(event) {
   const activatedButton = event.target;
   const userHtmlEl = activatedButton.parentElement;
-  const userId = userHtmlEl.id;
+  const userId = userHtmlEl.getAttribute('data-id');
   if (USE_MOCKS) {
         function myPromise (resolve, reject) {
             setTimeout(() => {
@@ -326,7 +326,7 @@ function deleteUser(event) {
         }
         someFetch = fakeRequest();
   } else {
-        someFetch = fetch(SERVER_URL +'/users/' + userId, {
+        someFetch = fetch(SERVER_URL + '/users/' + userId, {
             method: 'DELETE',
         })
   }
