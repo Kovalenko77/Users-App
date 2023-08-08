@@ -238,10 +238,10 @@ const TEST_USERS = [
 init();
 
 function init() {
-  return getAllusers();
+  return getAllUsers();
 }
 
-function getAllusers() {
+function getAllUsers() {
     let someFetch;
     if (USE_MOCKS) {
         function fakeRequest() {
